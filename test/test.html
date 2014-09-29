@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Adress Translation Widget Test</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/translationWidget.css">
+
+  </head>
+  <body>
+    <div class="container">
+      <div id="pluginPlayground" class="examples">
+
+        <div id="addressDetectionWidget" class="adw"></div>
+
+        <form id="testForm" role="form">
+            <div class="form-group">
+              <label for="street">Adress</label>
+              <input type="text" class="form-control" id="street" placeholder="Adress">
+            </div>
+
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="city" placeholder="City">
+            </div>
+
+            <div class="form-group zip-single">
+              <label for="zip">ZIP/Post Code</label>
+              <input type="text" class="form-control" id="zip" placeholder="Zip code or post code">
+            </div>
+
+            <div class="form-group zip-divided" style="display: none">
+              <label for="zip-first" style="display: block">ZIP/Post Code</label>
+              <input type="text" class="form-control" id="zip-first" style="width: 45px; display: inline"> -
+              <input type="text" class="form-control" id="zip-second" style="width: 60px; display: inline">
+            </div>
+
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input type="text" class="form-control" id="country" placeholder="Country">
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+      <script src="scripts/jq.adressDetectionWidget.js"></script>
+
+
+
+    </body>
+  </html>
