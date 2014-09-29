@@ -36,36 +36,7 @@
 
       <div class="row">
         <div class="col-md-12">
-          <div id="addressDetectionWidget" class="adw">
-            <div class="step-1 alert alert-info" >
-              <h4>Location Detection</h4>
-              <p>We can detect your adress to simplify form filling. Just press the link below.</p>
-              <button type="button" class="btn btn-primary btn-xs">Detect location</button>
-              <button type="button" class="btn btn-link">Cancel</button>
-            </div>
-            <div class="step-2 alert alert-info"  style="display:none">
-              <h4>Is that correct?</h4>
-              <p>We think that this is your adress. If it's correct click "fill" button below. Note that form will not be submited.</p>
-
-                <address>
-                  ul. Modelarska 10<br>
-                  Katowice, 40-003<br>
-                  Poland<br>
-                </address>
-
-              <button type="button" class="btn btn-primary btn-xs">Fill form</button>
-              <button type="button" class="btn btn-link">Cancel</button>
-            </div>
-            <div class="step-error alert alert-danger" style="display:none">
-              <h4>Ups...</h4>
-              <p>We cannot retrieve your location information right now :(</p>
-              <button type="button" class="btn btn-primary btn-xs">Try again</button>
-            </div>
-            <div class="step-loading alert alert-info" style="display:none">
-              <h4>Please wait...</h4>
-              <p>We are detecting your current location</p>
-            </div>
-          </div>
+          <div id="addressDetectionWidget" class="adw"></div>
         </div>
 
         <div class="col-md-12">
@@ -151,7 +122,7 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <!-- build:js({.tmp,app}) scripts/jq.addressDetectionWidget.min.js -->
     <script src="scripts/jq.adressDetectionWidget.js"></script>
     <!-- endbuild -->
