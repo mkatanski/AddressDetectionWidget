@@ -1,0 +1,60 @@
+<!doctype html> <html class="no-js"> <head> <meta charset="utf-8"> <title>Adress Detection Widget</title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.css"> <link rel="stylesheet" href="styles/main.css"> <link rel="stylesheet" href="styles/addressDetectionWidget.css">  <body> <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]--> <!-- Add your site or application content here --> <div class="container"> <div class="header"> <ul class="nav nav-pills pull-right"> <li class="active"><a id="fullWidthBtn" href="#">Full width</a></li> <li><a id="asideBtn" href="#">Aside compact</a></li> <li><a id="contactBtn" href="#" data-toggle="modal" data-target="#contactModal">Contact</a></li> </ul> <h3 class="text-muted">AddressDetectionWidget</h3> </div> <div class="row"> <div class="col-md-12"> <div id="addressDetectionWidget" class="adw"></div> </div> <div class="col-md-12"> <form id="testForm" role="form"> <div class="form-group"> <label for="street">Address</label> <input type="text" class="form-control" id="street" placeholder="Adress"> </div> <div class="form-group"> <label for="city">City</label> <input type="text" class="form-control" id="city" placeholder="City"> </div> <div class="form-group zip-single"> <label for="zip">ZIP/Post Code</label> <input type="text" class="form-control" id="zip" placeholder="Zip code or post code"> </div> <div class="form-group zip-divided" style="display: none"> <label for="zip-first" style="display: block">ZIP/Post Code</label> <input type="text" class="form-control" id="zip-first" style="width: 45px; display: inline"> - <input type="text" class="form-control" id="zip-second" style="width: 60px; display: inline"> </div> <div class="form-group"> <label for="country">Country</label> <input type="text" class="form-control" id="country" placeholder="Country"> </div> </form> </div> </div> <br><hr><br><button id="resetBtn" type="button" class="btn btn-primary btn-lg btn-block">Reset all</button><br> <div class="row"> <div class="col-md-12"> <h2>Options</h2> <p class="lead">Zip/Postal code modes</p> <ul class="post-modes nav nav-pills"> <li class="active"><a class="single" href="#">Single</a></li> <li><a class="divided" href="#">Divided</a></li> </ul> </div> </div> <br><br> <div class="footer"> <p><span class="glyphicon glyphicon-heart"></span> from the Nexway team</p> </div> </div> <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> <h4 class="modal-title" id="myModalLabel">Contact</h4> </div> <div class="modal-body"> Michal Katanski <a href="mailto:mkatanski@nexway.com">&lt;mkatanski@nexway.com&gt;</a> </div> <div class="modal-footer"> <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> </div> </div> </div> </div> <!--[if lt IE 9]>
+    <script src="scripts/oldieshim.js"></script>
+    <![endif]--> <script src="scripts/vendor.js"></script> <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script> <script src="scripts/jq.addressDetectionWidget.min.js"></script> <script>// WIDGET INITIALIZATION
+    // Example of AddressDetectionWidget initialization
+
+    $('#addressDetectionWidget').AddressDetectionWidget({
+        formId: '#testForm'
+    });
+
+
+    // DEMO SCRIPTS
+    // Only for DEMO page. Do not include in your own project
+
+    $('.header .nav a').on('click', function(e) {
+      if($(e.currentTarget).attr('id') != 'contactBtn'){
+        $('.header .nav li').removeClass('active');
+        $(e.currentTarget).parent().addClass('active');
+      }
+    });
+
+    $('.post-modes a').on('click', function(e) {
+      $('.post-modes li').removeClass('active');
+      $(e.currentTarget).parent().addClass('active');
+    });
+
+    $('.post-modes a.single').on('click', function(e) {
+      $('.zip-single').show();
+      $('.zip-divided').hide();
+    });
+
+    $('.post-modes a.divided').on('click', function(e) {
+      $('.zip-single').hide();
+      $('.zip-divided').show();
+    });
+
+    $('#fullWidthBtn').on('click', function(e) {
+      $('#addressDetectionWidget').parent().removeClass('col-md-4');
+      $('#addressDetectionWidget').parent().addClass('col-md-12');
+      $('#addressDetectionWidget').parent().removeClass('pull-right');
+      $('#addressDetectionWidget').parent().next().removeClass('col-md-8');
+      $('#addressDetectionWidget').parent().next().addClass('col-md-12');
+      $('#addressDetectionWidget').parent().next().removeClass('pull-left');
+    });
+
+    $('#asideBtn').on('click', function(e) {
+      $('#addressDetectionWidget').parent().removeClass('col-md-12');
+      $('#addressDetectionWidget').parent().addClass('col-md-4');
+      $('#addressDetectionWidget').parent().addClass('pull-right');
+      $('#addressDetectionWidget').parent().next().removeClass('col-md-12');
+      $('#addressDetectionWidget').parent().next().addClass('col-md-8');
+      $('#addressDetectionWidget').parent().next().addClass('pull-left');
+    });
+
+    $('#resetBtn').on('click', function(e){
+      $('#testForm')[0].reset();
+      var instance = $('#addressDetectionWidget').data('AddressDetectionWidget_#addressDetectionWidget');
+      instance.init();
+    });</script>  
