@@ -319,8 +319,8 @@ module.exports = function (grunt) {
     percolator: {
       compile: {
         source: '<%= yeoman.app %>/coffee/',
-        output: '.tmp/scripts/jq.adressDetectionWidget.js',
-        main: 'adressDetectionWidget.coffee',
+        output: '.tmp/scripts/jq.addressDetectionWidget.js',
+        main: 'addressDetectionWidget.coffee',
         compile: true,
         //opts: '--bare'
       }
@@ -332,7 +332,7 @@ module.exports = function (grunt) {
           paths: ["<%= yeoman.app %>/less"]
         },
         files: {
-          ".tmp/styles/adressDetectionWidget.css": "<%= yeoman.app %>/less/adressDetectionWidget.less"
+          ".tmp/styles/addressDetectionWidget.css": "<%= yeoman.app %>/less/addressDetectionWidget.less"
         }
       }
     },

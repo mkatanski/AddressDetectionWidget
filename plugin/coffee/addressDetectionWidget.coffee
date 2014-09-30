@@ -9,7 +9,7 @@
 #
 # @author   Michal Katanski (mkatanski@nexway.com)
 # @version 0.0.2
-class AdressDetectionWidget extends Plugin
+class AddressDetectionWidget extends Plugin
 
   #default options
   defaultOptions =
@@ -139,7 +139,7 @@ class AdressDetectionWidget extends Plugin
 
 (($, window, document, undefined_) ->
 
-  pluginName = "AdressDetectionWidget"
+  pluginName = "AddressDetectionWidget"
   $.fn[pluginName] = (options, languages) ->
     count = 0
     instanceCount = @.length
@@ -153,7 +153,7 @@ class AdressDetectionWidget extends Plugin
         count = '#' + $(this).attr('id')
 
       instanceName = pluginName + '_' + count
-      newInstance = new AdressDetectionWidget(this, options, instanceName, pluginName, languages)
+      newInstance = new AddressDetectionWidget(this, options, instanceName, pluginName, languages)
       unless $.data(this, instanceName)
         $.data this, instanceName, newInstance
         newInstance.init()

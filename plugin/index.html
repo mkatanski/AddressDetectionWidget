@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/addressDetectionWidget.css -->
-    <link rel="stylesheet" href="styles/adressDetectionWidget.css">
+    <link rel="stylesheet" href="styles/addressDetectionWidget.css">
     <!-- endbuild -->
   </head>
   <body>
@@ -42,7 +42,7 @@
         <div class="col-md-12">
           <form id="testForm" role="form">
             <div class="form-group">
-              <label for="street">Adress</label>
+              <label for="street">Address</label>
               <input type="text" class="form-control" id="street" placeholder="Adress">
             </div>
 
@@ -124,7 +124,7 @@
     <!-- endbuild -->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <!-- build:js({.tmp,app}) scripts/jq.addressDetectionWidget.min.js -->
-    <script src="scripts/jq.adressDetectionWidget.js"></script>
+    <script src="scripts/jq.addressDetectionWidget.js"></script>
     <!-- endbuild -->
 
     <script>
@@ -132,7 +132,7 @@
     // WIDGET INITIALIZATION
     // Example of AddressDetectionWidget initialization
 
-    $('#addressDetectionWidget').AdressDetectionWidget({
+    $('#addressDetectionWidget').AddressDetectionWidget({
         formId: '#testForm'
     });
 
