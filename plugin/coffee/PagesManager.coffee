@@ -19,6 +19,7 @@ class PagesManager
   start: ->
     step_start_html = """
     <div class="step-start alert alert-info" >
+      <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <h4>#{@base.options.texts.start.title}</h4>
       <p>#{@base.options.texts.start.content}</p>
       <button type="button" class="detectBtn btn btn-primary btn-xs">#{@base.options.texts.start.detectBtn}</button>
@@ -38,13 +39,17 @@ class PagesManager
       @_closeCurrentPage()
       return
 
+    @base._currentElement.find('.close').on 'click', (e) =>
+      @_closeCurrentPage()
+      return
+
     @base.log 'Render start page'
     return
 
   success: ->
-
     step_success_html = """
     <div class="step-success alert alert-info">
+      <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <h4>#{@base.options.texts.success.title}</h4>
       <p>#{@base.options.texts.success.content}</p>
         <address>
@@ -53,33 +58,50 @@ class PagesManager
           #{@base.addresData.country}<br>
         </address>
       <button type="button" class="fillBtn btn btn-primary btn-xs">#{@base.options.texts.success.fillBtn}</button>
-      <button type="button" class="cancelBtn btn btn-link">#{@base.options.texts.cancelBtn}</button>
     </div>
     """
-
     @_closeCurrentPage()
+
     # render new page
     @base._currentElement.html(step_success_html)
 
     @base._currentElement.find('.fillBtn').on 'click', (e) =>
       @base.fillForm()
-      #@_closeCurrentPage()
+      return
+
+    @base._currentElement.find('.close').on 'click', (e) =>
+      @_closeCurrentPage()
       return
 
     @base.log 'Render success page'
     return
 
-  error: ->
+  error: (title, content, showTryBtn = true) ->
     step_error_html = """
     <div class="step-error alert alert-danger">
-      <h4>#{@base.options.texts.error.title}</h4>
-      <p>#{@base.options.texts.error.content}</p>
-      <button type="button" class="tryBtn btn btn-primary btn-xs">#{@base.options.texts.error.tryAgainBtn}</button>
+      <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4>#{title}</h4>
+      <p>#{content}</p>
+      <button type="button" class="tryBtn btn btn-primary btn-xs">#{@base.options.texts.tryAgainBtn}</button>
     </div>
     """
     @_closeCurrentPage()
+
     # render new page
     @base._currentElement.html(step_error_html)
+
+    if showTryBtn is false
+      # Remove try btn
+      @base._currentElement.find('.tryBtn').remove()
+
+    @base._currentElement.find('.tryBtn').on 'click', (e) =>
+      @base.detect()
+      return
+
+    @base._currentElement.find('.close').on 'click', (e) =>
+      @_closeCurrentPage()
+      return
+
     @base.log 'Render error page'
     return
 
@@ -91,8 +113,8 @@ class PagesManager
     </div>
     """
     @_closeCurrentPage()
+
     # render new page
-    # $(@pagesHtml.start).appendTo @base._currentElement.html()
     @base._currentElement.html(step_loading_html)
     @base.log 'Render loading page'
     return

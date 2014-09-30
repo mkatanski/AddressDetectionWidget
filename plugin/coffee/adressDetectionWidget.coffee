@@ -13,7 +13,7 @@ class AdressDetectionWidget extends Plugin
 
   #default options
   defaultOptions =
-    formId: '#testForm'
+    formId: ''
     addressId: '#street'
     cityId: '#city'
     postalID: '#zip'
@@ -22,18 +22,19 @@ class AdressDetectionWidget extends Plugin
     countryID: '#country'
     texts:
       cancelBtn: 'cancel'
+      tryAgainBtn: 'Try again'
       start:
         title: 'Location Detection'
         content: 'We can detect your adress to simplify form filling. Just press the button below.'
         detectBtn: 'Detect location'
       success:
-        title: 'Is that correct?'
+        title: 'Is this your address?'
         content: 'We think that this is your adress. If it\'s correct click "Fill form" button below.'
         fillBtn: 'Fill form'
       error:
         title: 'Ups...'
-        content: 'We cannot retrieve your location information right now :('
-        tryAgainBtn: 'Try again'
+        geocoder_failed: 'We cannot retrieve your location information right now :('
+        unsupported_browser: 'Geolocation is not supported by this browser. Please try to use latest IE, Chrome, Firefox, Opera or Safari browser.'
       loading:
         title: 'Please wait...'
         content: 'We are detecting your current location'
@@ -46,6 +47,14 @@ class AdressDetectionWidget extends Plugin
   constructor: (element, options, instanceName, @pluginName) ->
     options = $.extend({}, defaultOptions, options)
     super(element, options, instanceName)
+
+    if options.formId is ''
+      @log 'There is no formId value', 'error'
+      return
+
+    if $(@options.formId).length is 0
+      @log 'Can\'t find form with id: ' + options.formId, 'error'
+      return
 
     # set initial input element as @_currentElement
     # <input class="m-wrap lang-translation large"/>
@@ -71,7 +80,7 @@ class AdressDetectionWidget extends Plugin
       # to retrieve adress
       navigator.geolocation.getCurrentPosition @_getAddress
     else
-      @pages.error()
+      @pages.error(@options.texts.error.title, @options.texts.error.unsupported_browser, false)
       @log "Geolocation is not supported by this browser.", 'error'
     return
 
@@ -102,7 +111,7 @@ class AdressDetectionWidget extends Plugin
           @_parseResult results[1];
           @pages.success()
         else
-          @pages.error()
+          @pages.error(@options.texts.error.title, @options.texts.error.geocoder_failed)
           @log "Geocoder failed due to: #{status}", 'error'
       return
 
