@@ -29,7 +29,7 @@ class AddressDetectionWidget extends Plugin
         detectBtn: 'Detect location'
       success:
         title: 'Is this your address?'
-        content: 'We think that this is your adress. If it\'s correct click "Fill form" button below.'
+        content: 'We think that this is your adress. If it is correct click "Fill form" button below.'
         fillBtn: 'Fill form'
       error:
         title: 'Ups...'
