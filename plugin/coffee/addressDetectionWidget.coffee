@@ -25,7 +25,7 @@ class AddressDetectionWidget extends Plugin
       tryAgainBtn: 'Try again'
       start:
         title: 'Location Detection'
-        content: 'We can detect your adress to simplify form filling. Just press the button below.'
+        content: 'We can detect your address to simplify form filling. Just press the button below.'
         detectBtn: 'Detect location'
       success:
         title: 'Is this your address?'
