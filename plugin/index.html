@@ -130,7 +130,7 @@
     <script>
 
     // WIDGET INITIALIZATION
-
+    // Example of AddressDetectionWidget initialization
 
     $('#addressDetectionWidget').AdressDetectionWidget({
         debug: true,
@@ -139,16 +139,13 @@
 
 
     // DEMO SCRIPTS
+    // Only for DEMO page. Do not include in your own project
 
     $('.header .nav a').on('click', function(e) {
       if($(e.currentTarget).attr('id') != 'contactBtn'){
         $('.header .nav li').removeClass('active');
         $(e.currentTarget).parent().addClass('active');
       }
-    });
-
-    $('#contactBtn').on('click', function(e){
-
     });
 
     $('.post-modes a').on('click', function(e) {

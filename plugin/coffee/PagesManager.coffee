@@ -1,7 +1,7 @@
 # PagesManager class
 #
 # @author   Michal Katanski (mkatanski@nexway.com)
-# @version 0.0.1
+# @version 0.0.3
 class PagesManager
 
   # Construct PagesManager class.
@@ -9,6 +9,11 @@ class PagesManager
   # @param [class] Base class
   #
   constructor: (@base) ->
+    return
+
+  _closeCurrentPage: ->
+    # Remove existing page if exists
+    @base._currentElement.children().remove()
     return
 
   start: ->
@@ -20,14 +25,17 @@ class PagesManager
       <button type="button" class="cancelBtn btn btn-link">#{@base.options.texts.cancelBtn}</button>
     </div>
     """
-    # Remove existing page if exists
-    @base._currentElement.children().remove()
+    @_closeCurrentPage()
     # render new page
-    # $(@pagesHtml.start).appendTo @base._currentElement.html()
     @base._currentElement.html(step_start_html)
 
+    # DetectBtn onClick event
     @base._currentElement.find('.detectBtn').on 'click', (e) =>
       @base.detect()
+      return
+    # CancelBtn onClick event
+    @base._currentElement.find('.cancelBtn').on 'click', (e) =>
+      @_closeCurrentPage()
       return
 
     @base.log 'Render start page'
@@ -39,23 +47,25 @@ class PagesManager
     <div class="step-success alert alert-info">
       <h4>#{@base.options.texts.success.title}</h4>
       <p>#{@base.options.texts.success.content}</p>
-
         <address>
           #{@base.addresData.street_name} #{@base.addresData.street_number}<br>
           #{@base.addresData.city}, #{@base.addresData.postal_code}<br>
           #{@base.addresData.country}<br>
         </address>
-
       <button type="button" class="fillBtn btn btn-primary btn-xs">#{@base.options.texts.success.fillBtn}</button>
       <button type="button" class="cancelBtn btn btn-link">#{@base.options.texts.cancelBtn}</button>
     </div>
     """
 
-    # Remove existing page if exists
-    @base._currentElement.children().remove()
+    @_closeCurrentPage()
     # render new page
-    # $(@pagesHtml.start).appendTo @base._currentElement.html()
     @base._currentElement.html(step_success_html)
+
+    @base._currentElement.find('.fillBtn').on 'click', (e) =>
+      @base.fillForm()
+      #@_closeCurrentPage()
+      return
+
     @base.log 'Render success page'
     return
 
@@ -67,10 +77,8 @@ class PagesManager
       <button type="button" class="tryBtn btn btn-primary btn-xs">#{@base.options.texts.error.tryAgainBtn}</button>
     </div>
     """
-    # Remove existing page if exists
-    @base._currentElement.children().remove()
+    @_closeCurrentPage()
     # render new page
-    # $(@pagesHtml.start).appendTo @base._currentElement.html()
     @base._currentElement.html(step_error_html)
     @base.log 'Render error page'
     return
@@ -82,8 +90,7 @@ class PagesManager
       <p>#{@base.options.texts.loading.content}</p>
     </div>
     """
-    # Remove existing page if exists
-    @base._currentElement.children().remove()
+    @_closeCurrentPage()
     # render new page
     # $(@pagesHtml.start).appendTo @base._currentElement.html()
     @base._currentElement.html(step_loading_html)

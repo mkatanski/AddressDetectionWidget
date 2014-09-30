@@ -8,12 +8,18 @@
 # Main AddressDetectionWidget class
 #
 # @author   Michal Katanski (mkatanski@nexway.com)
-# @version 0.0.1
+# @version 0.0.2
 class AdressDetectionWidget extends Plugin
 
   #default options
   defaultOptions =
-    dataSource: 'json'
+    formId: '#testForm'
+    addressId: '#street'
+    cityId: '#city'
+    postalID: '#zip'
+    postalFirstID: '#zip-first'
+    postalSecondID: '#zip-second'
+    countryID: '#country'
     texts:
       cancelBtn: 'cancel'
       start:
@@ -33,12 +39,6 @@ class AdressDetectionWidget extends Plugin
         content: 'We are detecting your current location'
 
 
-
-
-
-
-
-
   # Construct base class.
   #
   # @param [Object] jQuery plugin object
@@ -50,7 +50,11 @@ class AdressDetectionWidget extends Plugin
     # set initial input element as @_currentElement
     # <input class="m-wrap lang-translation large"/>
     @_currentElement = $(element)
+    @pages = new PagesManager(@)
 
+    return
+
+  init: ->
     @addresData =
       street_number: ''
       street_name: ''
@@ -58,13 +62,6 @@ class AdressDetectionWidget extends Plugin
       country: ''
       postal_code: ''
 
-
-
-    @pages = new PagesManager(@)
-
-    return
-
-  init: ->
     @pages.start()
     return
 
@@ -76,6 +73,15 @@ class AdressDetectionWidget extends Plugin
     else
       @pages.error()
       @log "Geolocation is not supported by this browser.", 'error'
+    return
+
+  fillForm: ->
+    $(@options.formId).find(@options.addressId).val @addresData.street_name + ' ' + @addresData.street_number
+    $(@options.formId).find(@options.cityId).val @addresData.city
+    $(@options.formId).find(@options.postalID).val @addresData.postal_code
+    $(@options.formId).find(@options.postalFirstID).val @addresData.postal_code.split('-')[0]
+    $(@options.formId).find(@options.postalSecondID).val @addresData.postal_code.split('-')[1]
+    $(@options.formId).find(@options.countryID).val @addresData.country
     return
 
 
