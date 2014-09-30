@@ -26,8 +26,9 @@ casper.test.begin "Initialization by ID", 0, (test) ->
   initializeMultiple = ->
     isInit = ""
     try
-      $("#addressDetectionWidget").AdressDetectionWidget
+      $("#addressDetectionWidget").AddressDetectionWidget
         debug: false
+        formId: '#testForm'
     catch e
       isInit = e.message
     isInit
@@ -49,8 +50,9 @@ casper.test.begin "Initialization by class", 0, (test) ->
   initializeSingle = ->
     isInit = ""
     try
-      $(".adw").AdressDetectionWidget
+      $(".adw").AddressDetectionWidget
         debug: true
+        formId: '#testForm'
     catch e
       isInit = e.message
     isInit

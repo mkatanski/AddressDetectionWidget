@@ -166,7 +166,6 @@
       $('#addressDetectionWidget').parent().removeClass('col-md-6');
       $('#addressDetectionWidget').parent().addClass('col-md-12');
       $('#addressDetectionWidget').parent().removeClass('pull-right');
-
       $('#addressDetectionWidget').parent().next().removeClass('col-md-6');
       $('#addressDetectionWidget').parent().next().addClass('col-md-12');
       $('#addressDetectionWidget').parent().next().removeClass('pull-left');
@@ -176,7 +175,6 @@
       $('#addressDetectionWidget').parent().removeClass('col-md-12');
       $('#addressDetectionWidget').parent().addClass('col-md-6');
       $('#addressDetectionWidget').parent().addClass('pull-right');
-
       $('#addressDetectionWidget').parent().next().removeClass('col-md-12');
       $('#addressDetectionWidget').parent().next().addClass('col-md-6');
       $('#addressDetectionWidget').parent().next().addClass('pull-left');
@@ -184,6 +182,8 @@
 
     $('#resetBtn').on('click', function(e){
       $('#testForm')[0].reset();
+      var instance = $('#addressDetectionWidget').data('AddressDetectionWidget_#addressDetectionWidget');
+      instance.init();
     });
 
     </script>
