@@ -44,7 +44,7 @@ First and foremost you have to create widget placeholder
 
 The width of the widget is always 100% so it fills its container. Height is fixed.
 
-After that initialize plugin using code below (place it at the bottom of the html document, before </body> tag).
+After that initialize plugin using code below (place it at the bottom of the html document, before ```</body>``` tag).
 ```html
 
 <script>
