@@ -1,4 +1,4 @@
-Address Detection Widget v.0.0.2
+Address Detection Widget v.0.1.0
 ===================
 
 Retrieves user localization and tries to find his current address using google maps api. Widget is using browser geolocalization functionality. The list of supported browsers are [here.](http://caniuse.com/#feat=geolocation) 
@@ -30,18 +30,33 @@ Also there is need to include css styles sheet:
 <link rel="stylesheet" href="styles/addressDetectionWidget.css">
 ```
 
-All above files you can find in **/dist** folder.
+*jq.addressDetectionWidget.min.js* and *addressDetectionWidget.css* files you can find in **/dist** folder.
 
 -----------------
 
 Initialization
 -----------
 
-First and formost you have to create widget placeholder
+First and foremost you have to create widget placeholder
 ```html
-...
 <div id="yourWidgetID" class="adw"></div>
-...
 ```
 
-The width of the widget is 100% so it allways fill its container. Height is fixed.
+The width of the widget is always 100% so it fills its container. Height is fixed.
+
+After that initialize plugin using code below (place it at the bottom of the html document, before </body> tag).
+```html
+
+<script>
+
+// WIDGET INITIALIZATION
+
+$('#yourWidgetID').AddressDetectionWidget({
+    formId: '#testForm' // id of form you want to fill with collected values
+});
+
+</script>
+
+```
+
+Notice that as an option you have to pass 'formId' with the ID name of form which plugin is going to fill.
