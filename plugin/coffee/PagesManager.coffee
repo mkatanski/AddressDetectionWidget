@@ -53,7 +53,7 @@ class PagesManager
       <h4>#{@base.options.texts.success.title}</h4>
       <p>#{@base.options.texts.success.content}</p>
         <address>
-          #{@base.addresData.street_name} #{@base.addresData.street_number}, #{@base.addresData.postal_code} #{@base.addresData.city}, #{@base.addresData.country}
+          #{@base.addressData.streetName} #{@base.addressData.streetNumber}, #{@base.addressData.postalCode} #{@base.addressData.city}, #{@base.addressData.country}
         </address>
       <button type="button" class="fillBtn btn btn-primary btn-xs">#{@base.options.texts.success.fillBtn}</button>
     </div>

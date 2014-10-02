@@ -16,10 +16,10 @@ class AddressDetectionWidget extends Plugin
     formId: ''
     addressId: '#street'
     cityId: '#city'
-    postalID: '#zip'
-    postalFirstID: '#zip-first'
-    postalSecondID: '#zip-second'
-    countryID: '#country'
+    postalId: '#zip'
+    postalFirstId: '#zip-first'
+    postalSecondId: '#zip-second'
+    countryId: '#country'
     texts:
       cancelBtn: 'cancel'
       tryAgainBtn: 'Try again'
@@ -33,8 +33,8 @@ class AddressDetectionWidget extends Plugin
         fillBtn: 'Fill form'
       error:
         title: 'Ups...'
-        geocoder_failed: 'We cannot retrieve your location information right now :('
-        unsupported_browser: 'Geolocation is not supported by this browser. Please try to use latest IE, Chrome, Firefox, Opera or Safari browser.'
+        geocoderFailed: 'We cannot retrieve your location information right now :('
+        unsupportedBrowser: 'Geolocation is not supported by this browser. Please try to use latest IE, Chrome, Firefox, Opera or Safari browser.'
       loading:
         title: 'Please wait...'
         content: 'We are detecting your current location'
@@ -64,12 +64,12 @@ class AddressDetectionWidget extends Plugin
     return
 
   init: ->
-    @addresData =
-      street_number: ''
-      street_name: ''
+    @addressData =
+      streetNumber: ''
+      streetName: ''
       city: ''
       country: ''
-      postal_code: ''
+      postalCode: ''
 
     @pages.start()
     return
@@ -80,17 +80,18 @@ class AddressDetectionWidget extends Plugin
       # to retrieve adress
       navigator.geolocation.getCurrentPosition @_getAddress
     else
-      @pages.error(@options.texts.error.title, @options.texts.error.unsupported_browser, false)
+      @pages.error(@options.texts.error.title, @options.texts.error.unsupportedBrowser, false)
       @log "Geolocation is not supported by this browser.", 'error'
     return
 
   fillForm: ->
-    $(@options.formId).find(@options.addressId).val @addresData.street_name + ' ' + @addresData.street_number
-    $(@options.formId).find(@options.cityId).val @addresData.city
-    $(@options.formId).find(@options.postalID).val @addresData.postal_code
-    $(@options.formId).find(@options.postalFirstID).val @addresData.postal_code.split('-')[0]
-    $(@options.formId).find(@options.postalSecondID).val @addresData.postal_code.split('-')[1]
-    $(@options.formId).find(@options.countryID).val @addresData.country
+    form = $(@options.formId);
+    form.find(@options.addressId).val @addressData.streetName + ' ' + @addressData.streetNumber
+    form.find(@options.cityId).val @addressData.city
+    form.find(@options.postalId).val @addressData.postalCode
+    form.find(@options.postalFirstId).val @addressData.postalCode.split('-')[0]
+    form.find(@options.postalSecondId).val @addressData.postalCode.split('-')[1]
+    form.find(@options.countryId).val @addressData.country
     return
 
 
@@ -111,7 +112,7 @@ class AddressDetectionWidget extends Plugin
           @_parseResult results[1];
           @pages.success()
         else
-          @pages.error(@options.texts.error.title, @options.texts.error.geocoder_failed)
+          @pages.error(@options.texts.error.title, @options.texts.error.geocoderFailed)
           @log "Geocoder failed due to: #{status}", 'error'
       return
 
@@ -122,15 +123,15 @@ class AddressDetectionWidget extends Plugin
       type = addrComp.types[0]
       name = addrComp.long_name
       if type is 'street_number'
-        @addresData.street_number = name
+        @addressData.streetNumber = name
       if type is 'route'
-        @addresData.street_name = name
+        @addressData.streetName = name
       if type is 'locality'
-        @addresData.city = name
+        @addressData.city = name
       if type is 'country'
-        @addresData.country = name
+        @addressData.country = name
       if type is 'postal_code'
-        @addresData.postal_code = name
+        @addressData.postalCode = name
     return
 
 
