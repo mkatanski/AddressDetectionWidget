@@ -8,7 +8,7 @@
 # Main AddressDetectionWidget class
 #
 # @author   Michal Katanski (mkatanski@nexway.com)
-# @version 0.0.2
+# @version 0.0.3
 class AddressDetectionWidget extends Plugin
 
   #default options
@@ -122,16 +122,14 @@ class AddressDetectionWidget extends Plugin
     for addrComp in addressObject.address_components
       type = addrComp.types[0]
       name = addrComp.long_name
-      if type is 'street_number'
-        @addressData.streetNumber = name
-      if type is 'route'
-        @addressData.streetName = name
-      if type is 'locality'
-        @addressData.city = name
-      if type is 'country'
-        @addressData.country = name
-      if type is 'postal_code'
-        @addressData.postalCode = name
+
+      switch type
+        when "street_number" then @addressData.streetNumber = name
+        when "route" then @addressData.streetName = name
+        when "locality" then @addressData.city = name
+        when "country" then @addressData.country = name
+        when "postal_code" then @addressData.postalCode = name
+
     return
 
 

@@ -39,7 +39,7 @@ Initialization
 
 First and foremost you have to create widget placeholder
 ```html
-<div id="yourWidgetID" class="adw"></div>
+<div id="yourWidgetID" class="addressDetectionWidget"></div>
 ```
 
 The width of the widget is always 100% so it fills its container. Height is fixed.
@@ -67,37 +67,37 @@ You can change widget settings by passing them as an JavaScript Object during in
 
 ```JS
 defaultOptions = {
-  formId: '',
-  addressId: '#street',
-  cityId: '#city',
-  postalID: '#zip',
-  postalFirstID: '#zip-first',
-  postalSecondID: '#zip-second',
-  countryID: '#country',
-  texts: {
-    cancelBtn: 'cancel',
-    tryAgainBtn: 'Try again',
-    start: {
-      title: 'Location Detection',
-      content: 'We can detect your address to simplify form filling. Just press the button below.',
-      detectBtn: 'Detect location'
-    },
-    success: {
-      title: 'Is this your address?',
-      content: 'We think that this is your adress. If it is correct click "Fill form" button below.',
-      fillBtn: 'Fill form'
-    },
-    error: {
-      title: 'Ups...',
-      geocoder_failed: 'We cannot retrieve your location information right now :(',
-      unsupported_browser: 'Geolocation is not supported by this browser. Please try to use latest IE, Chrome, Firefox, Opera or Safari browser.'
-    },
-    loading: {
-      title: 'Please wait...',
-      content: 'We are detecting your current location'
-    }
-  }
-};
+      formId: '',
+      addressId: '#street',
+      cityId: '#city',
+      postalId: '#zip',
+      postalFirstId: '#zip-first',
+      postalSecondId: '#zip-second',
+      countryId: '#country',
+      texts: {
+        cancelBtn: 'cancel',
+        tryAgainBtn: 'Try again',
+        start: {
+          title: 'Location Detection',
+          content: 'We can detect your address to simplify form filling. Just press the button below.',
+          detectBtn: 'Detect location'
+        },
+        success: {
+          title: 'Is this your address?',
+          content: 'We think that this is your adress. If it is correct click "Fill form" button below.',
+          fillBtn: 'Fill form'
+        },
+        error: {
+          title: 'Ups...',
+          geocoderFailed: 'We cannot retrieve your location information right now :(',
+          unsupportedBrowser: 'Geolocation is not supported by this browser. Please try to use latest IE, Chrome, Firefox, Opera or Safari browser.'
+        },
+        loading: {
+          title: 'Please wait...',
+          content: 'We are detecting your current location'
+        }
+      }
+    };
 ```
 
 And here is example how to change default ID of post-code input and success message title diuring plugin initialization. Remember to add **#** sign before input ID.
@@ -108,7 +108,7 @@ And here is example how to change default ID of post-code input and success mess
 // WIDGET INITIALIZATION
 $('#yourWidgetID').AddressDetectionWidget({
     formId: '#testForm',
-    postalID: '#post_code',
+    postalId: '#post_code',
     texts: {
       success: {
         title: 'Success!'
