@@ -100,3 +100,23 @@ defaultOptions = {
 };
 ```
 
+And here is example how to change default ID of post-code input and success message title diuring plugin initialization. Remember to add **#** sign before input ID.
+
+```html
+<script>
+
+// WIDGET INITIALIZATION
+$('#yourWidgetID').AddressDetectionWidget({
+    formId: '#testForm',
+    postalID: '#post_code',
+    texts: {
+      success: {
+        title: 'Is this your address?'
+      }
+    }
+});
+
+</script>
+
+```
+
