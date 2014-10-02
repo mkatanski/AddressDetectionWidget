@@ -63,7 +63,7 @@ Notice that as an option you have to pass ```formId``` with the ID of form which
 Options
 ------------
 
-You can change widget settings by passing them as a JavaScript Object during initialization. Below is the list of options with their default values.
+You can change widget settings by passing them as an JavaScript Object during initialization. Below is the list of options with their default values.
 
 ```JS
 defaultOptions = {
