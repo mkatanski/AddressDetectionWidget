@@ -63,7 +63,7 @@ Notice that as an option you have to pass ```formId``` with the ID of form which
 Options
 ------------
 
-You can change widget settings by passing them as aj JavaScript Object during initialization. Below is the list of options with their default values.
+You can change widget settings by passing them as a JavaScript Object during initialization. Below is the list of options with their default values.
 
 ```JS
 defaultOptions = {
@@ -123,10 +123,10 @@ $('#yourWidgetID').AddressDetectionWidget({
 License
 --------------
 
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Translation Fields</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a> and also available under [the MIT License](LICENSE.txt).
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Address Detection Widget</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a> and also available under [the MIT License](LICENSE.txt).
 
 Contact/Help
 -------------
 
-Michał Katański <mkatanski@nexway.com>
+<mkatanski@nexway.com>
 
