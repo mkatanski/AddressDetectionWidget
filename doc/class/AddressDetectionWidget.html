@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset='UTF-8'>
+  <title>CoffeeScript API Documentation</title>
+  <script src='../javascript/application.js'></script>
+  <script src='../javascript/search.js'></script>
+  <link rel='stylesheet' href='../stylesheets/application.css' type='text/css'>
+</head>
+  <body>
+    <div id='base' data-path='../'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../extra/README.md.html' title='AddressDetectionWidget'>
+      AddressDetectionWidget
+    </a>
+    &raquo;
+    <a href='../alphabetical_index.html' title='Index'>
+      Index
+    </a>
+    &raquo;
+    <span class='title'>AddressDetectionWidget</span>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        AddressDetectionWidget
+      </h1>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>plugin&#47;coffee&#47;addressDetectionWidget.coffee</td>
+        </tr>
+        <tr>
+          <td>Inherits:</td>
+          <td>
+            <a href='../class/Plugin.html'>Plugin</a>
+          </td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <hr>
+<pre><code>                                   AddressDetectionWidget
+</code></pre><p>Main AddressDetectionWidget class</p>
+</div>
+<div class='tags'>
+  <h3>Author:</h3>
+  <ul class='author'>
+    <li>
+      Michal Katanski (mkatanski@nexway.com) 
+    </li>
+  </ul>
+  <h3>Version:</h3>
+  <ul class='version'>
+    <li>
+      0.0.3 
+    </li>
+  </ul>
+</div>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#init-dynamic'>
+        #
+(void)
+<b>init</b><span>()</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Initialize plugin 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#detect-dynamic'>
+        #
+(void)
+<b>detect</b><span>()</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Detects current location using browsers geolocation engine <p>If browser is supporting geolocation it is invoking @_getAdress method
+asynchronously.</p>
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#fillForm-dynamic'>
+        #
+(void)
+<b>fillForm</b><span>()</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Fill form with collected address data 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#_getAddress-dynamic'>
+        #
+(void)
+<b>_getAddress</b><span>(position)</span>
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='note private title'>Private</span>
+    <span class='desc'>
+      Asynchronously get current address using google maps API <p>If address is found @_parseResult will be invoked and
+success page will be shown.</p>
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#_parseResult-dynamic'>
+        #
+(void)
+<b>_parseResult</b><span>(addressObject)</span>
+      </a>
+    </span>
+    <span class='note private title'>Private</span>
+    <span class='desc'>
+      Parse address data from google maps API and store it in @addressData public object
+
+    </span>
+  </li>
+</ul>
+      <h2>
+        <small>Inherited Method Summary</small>
+        <h3 class='inherited'>
+          Methods inherited from
+          <a href='../class/Plugin.html'>Plugin</a>
+        </h3>
+        <p class='inherited'>
+          <a href='../class/Plugin.html#log-dynamic'>#log</a>
+          <a href='../class/Plugin.html#getPluginByInstanceName-dynamic'>#getPluginByInstanceName</a>
+          <a href='../class/Plugin.html#runForEachInstance-dynamic'>#runForEachInstance</a>
+        </p>
+      </h2>
+      <h2>Constructor Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='constructor-dynamic'>
+      #
+(void)
+<b>constructor</b><span>(element, options, instanceName, pluginName)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Construct base class.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>jQuery</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>plugin object </span>
+    </li>
+    <li>
+      <span class='name'>User</span>
+      <span class='type'>
+        (
+          <tt>Objects</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>options </span>
+    </li>
+    <li>
+      <span class='name'>Instance</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>name </span>
+    </li>
+    <li>
+      <span class='name'>Plugin</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>name </span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='init-dynamic'>
+      #
+(void)
+<b>init</b><span>()</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Initialize plugin</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='detect-dynamic'>
+      #
+(void)
+<b>detect</b><span>()</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Detects current location using browsers geolocation engine</p><p>If browser is supporting geolocation it is invoking @_getAdress method
+asynchronously. Otherwise displays error page.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='fillForm-dynamic'>
+      #
+(void)
+<b>fillForm</b><span>()</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Fill form with collected address data</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='_getAddress-dynamic'>
+      #
+(void)
+<b>_getAddress</b><span>(position)</span>
+      <span class='bound note'>Bound</span>
+      <span class='note private'>Private</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Asynchronously get current address using google maps API</p><p>If address is found @_parseResult will be invoked and
+success page will be shown. Otherwise go to error page.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>Geolocation</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>result object </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='_parseResult-dynamic'>
+      #
+(void)
+<b>_parseResult</b><span>(addressObject)</span>
+      <span class='note private'>Private</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Parse address data from google maps API and store it
+in @addressData public object</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>Google</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Maps API resuklt object </span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  October 03, 14 09:09:08 by
+  <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
+    Codo
+  </a>
+  2.0.9
+  &#10034;
+  Press H to see the keyboard shortcuts
+  &#10034;
+  <a href='http://twitter.com/netzpirat' target='_parent'>@netzpirat</a>
+  &#10034;
+  <a href='http://twitter.com/_inossidabile' target='_parent'>@_inossidabile</a>
+</div>
+<iframe id='search_frame'></iframe>
+<div id='fuzzySearch'>
+  <input type='text'>
+  <ol></ol>
+</div>
+<div id='help'>
+  <p>
+    Quickly fuzzy find classes, mixins, methods, file:
+  </p>
+  <ul>
+    <li>
+      <span>T</span>
+      Open fuzzy finder dialog
+    </li>
+  </ul>
+  <p>
+    Control the navigation frame:
+  </p>
+  <ul>
+    <li>
+      <span>L</span>
+      Toggle list view
+    </li>
+    <li>
+      <span>C</span>
+      Show class list
+    </li>
+    <li>
+      <span>I</span>
+      Show mixin list
+    </li>
+    <li>
+      <span>F</span>
+      Show file list
+    </li>
+    <li>
+      <span>M</span>
+      Show method list
+    </li>
+    <li>
+      <span>E</span>
+      Show extras list
+    </li>
+  </ul>
+  <p>
+    You can focus and blur the search input:
+  </p>
+  <ul>
+    <li>
+      <span>S</span>
+      Focus search input
+    </li>
+    <li>
+      <span>Esc</span>
+      Blur search input
+    </li>
+  </ul>
+</div>
+  </body>
+</html>

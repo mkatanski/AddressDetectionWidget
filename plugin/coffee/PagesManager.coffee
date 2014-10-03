@@ -1,19 +1,21 @@
 # PagesManager class
 #
+# Manage widget pages.
+#
 # @author   Michal Katanski (mkatanski@nexway.com)
 # @version 0.0.3
 class PagesManager
 
   # Construct PagesManager class.
   #
-  # @param [class] Base class
+  # @param [class] AddressDetectionWidget class
   #
   constructor: (@base) ->
     return
 
   # Remove current page content from wrapper
   #
-  # return null
+  # @private
   _closeCurrentPage: ->
     # Remove existing page if exists
     @base._currentElement.children().remove()
@@ -21,7 +23,6 @@ class PagesManager
 
   # Show start page
   #
-  # return null
   start: ->
     step_start_html = """
     <div class="step-start alert alert-info" >
@@ -54,7 +55,6 @@ class PagesManager
 
   # Show success page
   #
-  # return null
   success: ->
     step_success_html = """
     <div class="step-success alert alert-info">
@@ -89,7 +89,6 @@ class PagesManager
   # @param [String] Error message
   # @param [Bool] Show/Hide 'Try Again' button
   #
-  # return null
   error: (title, content, showTryBtn = true) ->
     step_error_html = """
     <div class="step-error alert alert-danger">
@@ -121,7 +120,6 @@ class PagesManager
 
   # Show loading page
   #
-  # return null
   loading: ->
     step_loading_html = """
     <div class="step-loading alert alert-info">

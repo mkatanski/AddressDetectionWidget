@@ -47,7 +47,6 @@ class AddressDetectionWidget extends Plugin
   # @param [String] Instance name
   # @param [String] Plugin name
   #
-  # return null
   constructor: (element, options, instanceName, @pluginName) ->
     options = $.extend({}, defaultOptions, options)
     super(element, options, instanceName)
@@ -73,7 +72,6 @@ class AddressDetectionWidget extends Plugin
 
   # Initialize plugin
   #
-  # return null
   init: ->
     @addressData =
       streetNumber: ''
@@ -90,7 +88,6 @@ class AddressDetectionWidget extends Plugin
   # If browser is supporting geolocation it is invoking @_getAdress method
   # asynchronously. Otherwise displays error page.
   #
-  # return null
   detect: ->
     if navigator.geolocation
       # get current coordinates and pass to getAdress method
@@ -104,7 +101,6 @@ class AddressDetectionWidget extends Plugin
 
   # Fill form with collected address data
   #
-  # return null
   fillForm: ->
     form = $(@options.formId);
     form.find(@options.addressId).val @addressData.streetName + ' ' + @addressData.streetNumber
@@ -123,7 +119,6 @@ class AddressDetectionWidget extends Plugin
   # @private
   # @param [Object] Geolocation result object
   #
-  # return null
   _getAddress: (position) =>
     lat = position.coords.latitude
     lng = position.coords.longitude
@@ -158,7 +153,6 @@ class AddressDetectionWidget extends Plugin
   # @private
   # @param [Object] Google Maps API resuklt object
   #
-  # return null
   _parseResult: (addressObject) ->
     for addrComp in addressObject.address_components
       # always use first type name as it is most reliable
