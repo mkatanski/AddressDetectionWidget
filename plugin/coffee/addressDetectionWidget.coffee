@@ -43,26 +43,37 @@ class AddressDetectionWidget extends Plugin
   # Construct base class.
   #
   # @param [Object] jQuery plugin object
+  # @param [Objects] User options
+  # @param [String] Instance name
+  # @param [String] Plugin name
   #
+  # return null
   constructor: (element, options, instanceName, @pluginName) ->
     options = $.extend({}, defaultOptions, options)
     super(element, options, instanceName)
 
+    # formId is required parameter
     if options.formId is ''
       @log 'There is no formId value', 'error'
       return
 
+    # form has to be existing form in current document
     if $(@options.formId).length is 0
       @log 'Can\'t find form with id: ' + options.formId, 'error'
       return
 
     # set initial input element as @_currentElement
-    # <input class="m-wrap lang-translation large"/>
+    # <div class="addressDetectionWidget"/>
     @_currentElement = $(element)
+    # Initialize PagesManager class which will create widget pages
+    # and switch between them
     @pages = new PagesManager(@)
 
     return
 
+  # Initialize plugin
+  #
+  # return null
   init: ->
     @addressData =
       streetNumber: ''
@@ -74,16 +85,26 @@ class AddressDetectionWidget extends Plugin
     @pages.start()
     return
 
+  # Detects current location using browsers geolocation engine
+  #
+  # If browser is supporting geolocation it is invoking @_getAdress method
+  # asynchronously. Otherwise displays error page.
+  #
+  # return null
   detect: ->
     if navigator.geolocation
       # get current coordinates and pass to getAdress method
       # to retrieve adress
       navigator.geolocation.getCurrentPosition @_getAddress
     else
+      # go to error page
       @pages.error(@options.texts.error.title, @options.texts.error.unsupportedBrowser, false)
       @log "Geolocation is not supported by this browser.", 'error'
     return
 
+  # Fill form with collected address data
+  #
+  # return null
   fillForm: ->
     form = $(@options.formId);
     form.find(@options.addressId).val @addressData.streetName + ' ' + @addressData.streetNumber
@@ -94,13 +115,22 @@ class AddressDetectionWidget extends Plugin
     form.find(@options.countryId).val @addressData.country
     return
 
-
+  # Asynchronously get current address using google maps API
+  #
+  # If address is found @_parseResult will be invoked and
+  # success page will be shown. Otherwise go to error page.
+  #
+  # @private
+  # @param [Object] Geolocation result object
+  #
+  # return null
   _getAddress: (position) =>
     lat = position.coords.latitude
     lng = position.coords.longitude
 
     @pages.loading()
-
+    # instatiate Google Maps classes required to
+    # retrieve address data
     geocoder = new google.maps.Geocoder();
     latlng = new google.maps.LatLng(lat, lng);
 
@@ -108,18 +138,30 @@ class AddressDetectionWidget extends Plugin
       if status == google.maps.GeocoderStatus.OK
         if results[0] && results[1]
           @log results[0].formatted_address
+          # Parse result twice to get first and
+          # second location level
           @_parseResult results[0];
           @_parseResult results[1];
+          # go to success page
           @pages.success()
         else
+          # go to error page
           @pages.error(@options.texts.error.title, @options.texts.error.geocoderFailed)
           @log "Geocoder failed due to: #{status}", 'error'
       return
 
     return
 
+  # Parse address data from google maps API and store it
+  # in @addressData public object
+  #
+  # @private
+  # @param [Object] Google Maps API resuklt object
+  #
+  # return null
   _parseResult: (addressObject) ->
     for addrComp in addressObject.address_components
+      # always use first type name as it is most reliable
       type = addrComp.types[0]
       name = addrComp.long_name
 

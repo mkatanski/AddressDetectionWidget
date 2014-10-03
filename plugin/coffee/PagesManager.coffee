@@ -11,11 +11,17 @@ class PagesManager
   constructor: (@base) ->
     return
 
+  # Remove current page content from wrapper
+  #
+  # return null
   _closeCurrentPage: ->
     # Remove existing page if exists
     @base._currentElement.children().remove()
     return
 
+  # Show start page
+  #
+  # return null
   start: ->
     step_start_html = """
     <div class="step-start alert alert-info" >
@@ -46,6 +52,9 @@ class PagesManager
     @base.log 'Render start page'
     return
 
+  # Show success page
+  #
+  # return null
   success: ->
     step_success_html = """
     <div class="step-success alert alert-info">
@@ -74,6 +83,13 @@ class PagesManager
     @base.log 'Render success page'
     return
 
+  # Show error page
+  #
+  # @param [String] Error title
+  # @param [String] Error message
+  # @param [Bool] Show/Hide 'Try Again' button
+  #
+  # return null
   error: (title, content, showTryBtn = true) ->
     step_error_html = """
     <div class="step-error alert alert-danger">
@@ -103,6 +119,9 @@ class PagesManager
     @base.log 'Render error page'
     return
 
+  # Show loading page
+  #
+  # return null
   loading: ->
     step_loading_html = """
     <div class="step-loading alert alert-info">
