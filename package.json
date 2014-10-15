@@ -1,6 +1,6 @@
 {
-  "name": "addressDetectionWidget",
-  "version": "0.1.0",
+  "name": "address-detection-widget",
+  "version": "1.0.1",
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -26,7 +26,8 @@
     "jshint-stylish": "^0.2.0",
     "load-grunt-tasks": "^0.4.0",
     "time-grunt": "^0.3.1",
-    "grunt-casperjs": "latest"
+    "grunt-casperjs": "latest",
+    "grunt-text-replace": "~0.3.12"
   },
   "engines": {
     "node": ">=0.10.0"

@@ -31,9 +31,6 @@ class Plugin
         if @options.messageScope is 'warning' and type is 'info'
           show = false
 
-        if type is 'debug'
-          show = true
-
         if type is 'info'
           titleColor = 'background: white; color: grey'
           msgColor = 'background: white; color: green'
@@ -51,11 +48,7 @@ class Plugin
       return
 
     getPluginByInstanceName: (domElement, instName, numeric=-1, callback) ->
-
-      if numeric > -1
-        return $.data(domElement, instName)
-      else
-        return $.data(domElement, instName)
+      return $.data(domElement, instName)
 
     runForEachInstance: (selector, callback) ->
       i = 0

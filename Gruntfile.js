@@ -286,6 +286,11 @@ module.exports = function (grunt) {
           cwd: 'bower_components/bootstrap/dist',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: '.tmp/scripts',
+          dest: '<%= yeoman.dist %>/scripts',
+          src: ['addressDetectionWidget.js']
         }]
       },
       styles: {
@@ -319,7 +324,7 @@ module.exports = function (grunt) {
     percolator: {
       compile: {
         source: '<%= yeoman.app %>/coffee/',
-        output: '.tmp/scripts/jq.addressDetectionWidget.js',
+        output: '.tmp/scripts/addressDetectionWidget.js',
         main: 'addressDetectionWidget.coffee',
         compile: true,
         //opts: '--bare'
@@ -336,6 +341,31 @@ module.exports = function (grunt) {
         }
       }
     },
+
+    replace: {
+      min: {
+        src: ['<%= yeoman.dist %>/scripts/addressDetectionWidget.min.js'],
+        dest: '<%= yeoman.dist %>/scripts/bare/addressDetectionWidget-bare.min.js',
+        replacements: [{
+          from: /\(function\(\){/,
+          to: 'jQuery(function($){'
+        }, {
+          from: '.call(this);',
+          to: ';'
+        }]
+      },
+      full: {
+        src: ['<%= yeoman.dist %>/scripts/addressDetectionWidget.js'],
+        dest: '<%= yeoman.dist %>/scripts/bare/addressDetectionWidget-bare.js',
+        replacements: [{
+          from: /\(function\(\) {/,
+          to: 'jQuery(function($) {'
+        }, {
+          from: '}).call(this);',
+          to: '});'
+        }]
+      },
+    }
 
   });
 
@@ -384,7 +414,8 @@ module.exports = function (grunt) {
     'uglify',
     //'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'replace'
   ]);
 
   grunt.registerTask('default', [

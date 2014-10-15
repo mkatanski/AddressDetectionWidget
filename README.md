@@ -1,4 +1,4 @@
-Address Detection Widget v.0.1.0
+Address Detection Widget v.1.0.1
 ===================
 
 Retrieves user localization and tries to find his current address using google maps api. After that it automatically fill HTML form with collected values. Widget is using browser geolocalization functionality. The list of supported browsers are [here.](http://caniuse.com/#feat=geolocation) 
@@ -21,7 +21,7 @@ To enable this widget on your website you have to include javascript documents i
  <!--  Google maps API -->
  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
  <!-- Widget core scripts  -->
- <script src="scripts/jq.addressDetectionWidget.min.js"></script>
+ <script src="scripts/addressDetectionWidget.min.js"></script>
  ```
 
 Also there is need to include css styles sheets:

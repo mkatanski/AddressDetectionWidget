@@ -1,12 +1,12 @@
 {
-  "name": "addressDetectionWidget",
-  "version": "0.1.0",
+  "name": "address-detection-widget",
+  "version": "1.0.1",
   "dependencies": {
-    "es5-shim": "~3.1.0",
-    "bootstrap": "~3.2.0"
+
   },
   "devDependencies": {
-
+    "es5-shim": "~3.1.0",
+    "bootstrap": "~3.2.0"
   },
   "appPath": "plugin"
 }
