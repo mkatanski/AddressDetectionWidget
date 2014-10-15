@@ -14,7 +14,7 @@ Address detection widget requires [jquery](http://jquery.com/) library to work. 
 Installation
 -------------
 
-**Download with bower**
+**Download with bower**<br >
 You can use bower to get latest version of Address Detection Widget. Just type: ```bower install address-detection-widget``` in system terminal/console.
 
 To enable this widget on your website you have to include javascript documents in your document head section:
