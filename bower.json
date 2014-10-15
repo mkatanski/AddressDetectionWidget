@@ -2,11 +2,12 @@
   "name": "address-detection-widget",
   "version": "1.0.1",
   "dependencies": {
-
+    "bootstrap": "~3.2.0",
+    "jquery": "1.11.1"
   },
   "devDependencies": {
-    "es5-shim": "~3.1.0",
-    "bootstrap": "~3.2.0"
+    "es5-shim": "~3.1.0"
+
   },
   "appPath": "plugin"
 }

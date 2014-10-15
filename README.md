@@ -14,10 +14,13 @@ Address detection widget requires [jquery](http://jquery.com/) library to work. 
 Installation
 -------------
 
+**Download with bower**
+You can use bower to get latest version of Address Detection Widget. Just type: ```bower install address-detection-widget``` in system terminal/console.
+
 To enable this widget on your website you have to include javascript documents in your document head section:
  ```html
  <!-- jQuery  -->
- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+ <script src="bower_components/jquery/dist/jquery.js"></script>
  <!--  Google maps API -->
  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
  <!-- Widget core scripts  -->
@@ -26,7 +29,7 @@ To enable this widget on your website you have to include javascript documents i
 
 Also there is need to include css styles sheets:
 ```html
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" >
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
 <link rel="stylesheet" href="styles/addressDetectionWidget.css">
 ```
 
